@@ -1,4 +1,6 @@
-
+/*
+ * 
+ */
 public class HashTable {
     // Number of buckets in the hash table
     private static final int SIZE = 37;
@@ -14,7 +16,7 @@ public class HashTable {
         }
     }
 
-    // Hash function as specified in your rubric
+    // Hash function as specified
     private int hash(int key) {
         return ((key * key) >>> 10) % SIZE;
     }
@@ -47,7 +49,7 @@ public class HashTable {
             // Check if the BST at this index is not empty before printing
             if (!table[i].isEmpty()) {
                 System.out.print(i + "- ");
-                table[i].levelOrder();  // or any other order you prefer
+                table[i].levelOrder(); 
                 System.out.println();
             }
         }
@@ -58,12 +60,13 @@ public class HashTable {
         for (int i = start; i <= end; i++) {
             if (!table[i].isEmpty()) {
                 System.out.print(i + "- ");
-                table[i].levelOrder();  // Or any other traversal method you prefer
+                table[i].levelOrder(); 
                 System.out.println();
             }
         }
     }
     
+    //Bool method to check for empty table
     public boolean isEmpty() {
         for (BST<Pair<Integer>> bst : table) {
             if (!bst.isEmpty()) {

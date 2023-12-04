@@ -9,7 +9,7 @@
  * The program allows for the creation of a database index organized by student ID to facilitate the creation, reading editing and deletion
  * of student record file by student ID. 
  * Class Description: The following main class handles all functionality other than the data structures and organization handled 
- * by the provided Student, Pair, BST and QueueSLL classes.
+ * by the provided Student, Pair, HashTable, BST and QueueSLL classes.
  * */
 import java.util.*;
 import java.io.*;
@@ -75,6 +75,8 @@ public class Main {
 	//Main menu provides interface to the user. Handles user choices
 	private static void menu() {
 		
+		System.out.println(); //add some blank space
+		
 		menuHelper();
 
 		//check for valid input.
@@ -128,9 +130,17 @@ public class Main {
 	//builds index using a BST
 	private static void buildIndex() {
 		
-	    if (!checkRAF()) {
+	    Student student = new Student();
+	    String raFileName;
+	    
+	    System.out.print("Enter the random access file name: ");
+	    raFileName = scanner.next();
+	    File raFileCheck = new File(raFileName);
+	    
+	    if (!raFileCheck.exists()) {
+	        System.out.println("File not found.");
 	        menu();
-	        return;
+	        return; 
 	    }
 
 	    try {
@@ -142,7 +152,6 @@ public class Main {
 
 	        while (raFile.getFilePointer() < raFile.length()) {
 	        	
-	            Student student = new Student();
 	            student.readFromFile(raFile);
 
 	            if (!isRecordDeleted(student)) {
@@ -181,11 +190,25 @@ public class Main {
 	    menu();
 	    
 	}
+	
+	//same as display index minus menu loop
+	private static void displayIndexOnExit() {
+		
+	    if (index.isEmpty()) { // Replace checkIndex() with appropriate method
+	        System.out.println("No index available. Use option 3 to first build the index.");
+	        menu();
+	        return;
+	    }
+
+	    // Display hash table
+	    index.display();
+	    
+	}
 
 	//Breaks Menu loop, closes scanner and exits terminal application.
 	private static void exit() {
 		
-		displayIndex();
+		displayIndexOnExit();
 		System.out.println("Bye!");
 		scanner.close();
 		System.exit(0);
@@ -518,38 +541,45 @@ public class Main {
 
 	//Takes input that provides an input text file and creates a random access file with the desired name.
 	private static void makeRandomAccess() {
-		
-		try {
-			
-			String inputFile, outputFile;
-			
-			System.out.print("Enter an input file name: ");
-			inputFile = scanner.next();
-			file = new File(inputFile);
-			fileIn = new Scanner(file);
-			
-			System.out.print("Enter an output file name: ");
-			outputFile = scanner.next();
-			file = new File(outputFile);
-			
-			raFile = new RandomAccessFile(file, "rw");
-			build();
-			
+	    try {
+	        String inputFile, outputFile;
 
-		}
-		catch(InputMismatchException ex) {
-			System.out.println(ex.getMessage());
-			scanner.nextLine();
-		}
-		catch(FileNotFoundException ex) {
-			System.out.println(ex.getMessage());
-		}
-		catch(IOException ex) {
-			System.out.println(ex.getMessage());
-		}
-		
-		menu();
-		
+	        System.out.print("Enter an input file name: ");
+	        inputFile = scanner.next();
+	        file = new File(inputFile);
+	        if (!file.exists()) {
+	            System.out.println("Input file does not exist.");
+	            return;
+	        }
+	        fileIn = new Scanner(file);
+
+	        System.out.print("Enter an output file name: ");
+	        outputFile = scanner.next();
+	        file = new File(outputFile);
+
+	        // Check if file exists and delete it if it does
+	        if (file.exists()) {
+	            System.out.println("Output file already exists. Deleting existing file...");
+	            boolean deleteSuccess = file.delete();
+	            if (!deleteSuccess) {
+	                System.out.println("Failed to delete existing file. Please try again.");
+	                return;
+	            }
+	        }
+
+	        raFile = new RandomAccessFile(file, "rw");
+	        build();
+
+	    } catch (InputMismatchException ex) {
+	        System.out.println(ex.getMessage());
+	        scanner.nextLine();
+	    } catch (FileNotFoundException ex) {
+	        System.out.println(ex.getMessage());
+	    } catch (IOException ex) {
+	        System.out.println(ex.getMessage());
+	    }
+
+	    menu();
 	}
 
 	
