@@ -44,10 +44,33 @@ public class HashTable {
     // Method to display the hash table
     public void display() {
         for (int i = 0; i < SIZE; i++) {
-            System.out.print(i + "- ");
-            table[i].levelOrder();  // or any other order you prefer
-            System.out.println();
+            // Check if the BST at this index is not empty before printing
+            if (!table[i].isEmpty()) {
+                System.out.print(i + "- ");
+                table[i].levelOrder();  // or any other order you prefer
+                System.out.println();
+            }
         }
+    }
+    
+    // Method for displaying from a specific range
+    public void displayRange(int start, int end) {
+        for (int i = start; i <= end; i++) {
+            if (!table[i].isEmpty()) {
+                System.out.print(i + "- ");
+                table[i].levelOrder();  // Or any other traversal method you prefer
+                System.out.println();
+            }
+        }
+    }
+    
+    public boolean isEmpty() {
+        for (BST<Pair<Integer>> bst : table) {
+            if (!bst.isEmpty()) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
