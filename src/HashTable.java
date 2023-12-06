@@ -1,5 +1,9 @@
 /*
- * 
+ * Programmer: 	Mitchell Foote
+ * Course: 	   	COSC 311, F'23
+ * Project:    	5
+ * Due date:   	12-5-23
+ * Class Description: A hash table built to implement the projects index using BST.
  */
 public class HashTable {
     // Number of buckets in the hash table

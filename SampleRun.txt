@@ -1,0 +1,356 @@
+Programmer:		Mitchell Foote
+Course:			COSC 311, F'23
+Project:		5
+Due date:		12-5-23
+
+
+   Menu
+   ====
+1: Make a random-access file
+2: Display a random-access file
+3: Build the index
+4: Display the index
+5: Retrieve a record
+6: Modify a record
+7: Add a record
+8: Delete a record
+9: Exit
+
+Enter your choice: 1
+Enter an input file name: Students.txt
+Enter an output file name: DBS
+Output file already exists. Deleting existing file...
+Random access file is bu ilt successfully!
+Total valid records written: 11
+
+
+   Menu
+   ====
+1: Make a random-access file
+2: Display a random-access file
+3: Build the index
+4: Display the index
+5: Retrieve a record
+6: Modify a record
+7: Add a record
+8: Delete a record
+9: Exit
+
+Enter your choice: 2
+Enter the random access file name: DBS
+Franny              Goldsmith           4321      3.76      
+Gordan              Freeman             1671      4.0       
+Gene                Wolfe               3973      3.7       
+Darcy               Hoffman             4462      3.56      
+Daren               Thomson             3422      3.2       
+Enter N (for next 5 records), A (for all remaining records), M(for main menu): a
+Sara                Connor              9932      2.79      
+Adam                Nelson              1877      2.47      
+Peregrin            Took                6885      1.99      
+Carl                Howard              3325      2.9       
+Stu                 Redman              5255      3.72      
+Jan                 Fuhr                1156      3.97      
+
+   Menu
+   ====
+1: Make a random-access file
+2: Display a random-access file
+3: Build the index
+4: Display the index
+5: Retrieve a record
+6: Modify a record
+7: Add a record
+8: Delete a record
+9: Exit
+
+Enter your choice: 3
+Enter the random access file name: DBS
+Total file length: 1012
+Index has been built successfully!
+
+
+   Menu
+   ====
+1: Make a random-access file
+2: Display a random-access file
+3: Build the index
+4: Display the index
+5: Retrieve a record
+6: Modify a record
+7: Add a record
+8: Delete a record
+9: Exit
+
+Enter your choice: 4
+2- (3422,4) 
+
+5- (6885,7) 
+
+10- (1156,10) 
+
+17- (4462,3) 
+
+21- (9932,5) 
+
+22- (3973,2) 
+
+25- (1671,1) 
+
+29- (4321,0) 
+(3325,8) 
+
+31- (5255,9) 
+
+36- (1877,6) 
+
+
+   Menu
+   ====
+1: Make a random-access file
+2: Display a random-access file
+3: Build the index
+4: Display the index
+5: Retrieve a record
+6: Modify a record
+7: Add a record
+8: Delete a record
+9: Exit
+
+Enter your choice: 5
+Enter student ID: 4321
+Franny              Goldsmith           4321      3.76      
+
+   Menu
+   ====
+1: Make a random-access file
+2: Display a random-access file
+3: Build the index
+4: Display the index
+5: Retrieve a record
+6: Modify a record
+7: Add a record
+8: Delete a record
+9: Exit
+
+Enter your choice: 6
+Enter student ID: 4321
+Franny              Goldsmith           4321      3.76      
+
+1- Change the first name
+2- Change the last name
+3- Change GPA
+4- Done
+Enter your choice: 1
+Enter First Name: Lilly
+Lilly               Goldsmith           4321      3.76      
+
+1- Change the first name
+2- Change the last name
+3- Change GPA
+4- Done
+Enter your choice: 3
+Enter GPA: 3.12
+Lilly               Goldsmith           4321      3.12      
+
+1- Change the first name
+2- Change the last name
+3- Change GPA
+4- Done
+Enter your choice: 4
+
+   Menu
+   ====
+1: Make a random-access file
+2: Display a random-access file
+3: Build the index
+4: Display the index
+5: Retrieve a record
+6: Modify a record
+7: Add a record
+8: Delete a record
+9: Exit
+
+Enter your choice: 7
+Enter details for the new record:
+Enter Student ID: 1111
+Enter First Name: Steve
+Enter Last Name: Smith
+Enter GPA: 2.98
+
+   Menu
+   ====
+1: Make a random-access file
+2: Display a random-access file
+3: Build the index
+4: Display the index
+5: Retrieve a record
+6: Modify a record
+7: Add a record
+8: Delete a record
+9: Exit
+
+Enter your choice: 4
+2- (3422,4) 
+
+5- (6885,7) 
+
+10- (1156,10) 
+
+17- (4462,3) 
+
+21- (9932,5) 
+(1111,11) 
+
+22- (3973,2) 
+
+25- (1671,1) 
+
+29- (4321,0) 
+(3325,8) 
+
+31- (5255,9) 
+
+36- (1877,6) 
+
+
+   Menu
+   ====
+1: Make a random-access file
+2: Display a random-access file
+3: Build the index
+4: Display the index
+5: Retrieve a record
+6: Modify a record
+7: Add a record
+8: Delete a record
+9: Exit
+
+Enter your choice: 2
+Enter the random access file name: DBS
+Lilly               Goldsmith           4321      3.12      
+Gordan              Freeman             1671      4.0       
+Gene                Wolfe               3973      3.7       
+Darcy               Hoffman             4462      3.56      
+Daren               Thomson             3422      3.2       
+Enter N (for next 5 records), A (for all remaining records), M(for main menu): a
+Sara                Connor              9932      2.79      
+Adam                Nelson              1877      2.47      
+Peregrin            Took                6885      1.99      
+Carl                Howard              3325      2.9       
+Stu                 Redman              5255      3.72      
+Jan                 Fuhr                1156      3.97      
+Steve               Smith               1111      2.98      
+
+   Menu
+   ====
+1: Make a random-access file
+2: Display a random-access file
+3: Build the index
+4: Display the index
+5: Retrieve a record
+6: Modify a record
+7: Add a record
+8: Delete a record
+9: Exit
+
+Enter your choice: 8
+Enter student ID: 1111
+Record successfully deleted.
+
+   Menu
+   ====
+1: Make a random-access file
+2: Display a random-access file
+3: Build the index
+4: Display the index
+5: Retrieve a record
+6: Modify a record
+7: Add a record
+8: Delete a record
+9: Exit
+
+Enter your choice: 4
+2- (3422,4) 
+
+5- (6885,7) 
+
+10- (1156,10) 
+
+17- (4462,3) 
+
+21- (9932,5) 
+
+22- (3973,2) 
+
+25- (1671,1) 
+
+29- (4321,0) 
+(3325,8) 
+
+31- (5255,9) 
+
+36- (1877,6) 
+
+
+   Menu
+   ====
+1: Make a random-access file
+2: Display a random-access file
+3: Build the index
+4: Display the index
+5: Retrieve a record
+6: Modify a record
+7: Add a record
+8: Delete a record
+9: Exit
+
+Enter your choice: 2
+Enter the random access file name: DBS
+Lilly               Goldsmith           4321      3.12      
+Gordan              Freeman             1671      4.0       
+Gene                Wolfe               3973      3.7       
+Darcy               Hoffman             4462      3.56      
+Daren               Thomson             3422      3.2       
+Enter N (for next 5 records), A (for all remaining records), M(for main menu): a
+Sara                Connor              9932      2.79      
+Adam                Nelson              1877      2.47      
+Peregrin            Took                6885      1.99      
+Carl                Howard              3325      2.9       
+Stu                 Redman              5255      3.72      
+Jan                 Fuhr                1156      3.97      
+
+   Menu
+   ====
+1: Make a random-access file
+2: Display a random-access file
+3: Build the index
+4: Display the index
+5: Retrieve a record
+6: Modify a record
+7: Add a record
+8: Delete a record
+9: Exit
+
+Enter your choice: 9
+2- (3422,4) 
+
+5- (6885,7) 
+
+10- (1156,10) 
+
+17- (4462,3) 
+
+21- (9932,5) 
+
+22- (3973,2) 
+
+25- (1671,1) 
+
+29- (4321,0) 
+(3325,8) 
+
+31- (5255,9) 
+
+36- (1877,6) 
+
+Bye!

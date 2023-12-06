@@ -68,14 +68,14 @@ public class Main {
 	        }
 	    }
 
-	    System.out.println("Random access file is bu ilt successfully!");
+	    System.out.println("Random access file is built successfully!");
 	    System.out.println("Total valid records written: " + recordCount + "\n");
 	}
 	
 	//Main menu provides interface to the user. Handles user choices
 	private static void menu() {
 		
-		System.out.println(); //add some blank space
+		System.out.println();
 		
 		menuHelper();
 
@@ -218,8 +218,8 @@ public class Main {
 	//Marks a record as deleted using a "lazy" deletion method.
 	private static void deleteRecord() {
 		
-	    if (checkIndex()) {
-	    	System.out.println("No index available. Use option 3 to first build the index.");
+	    if (index.isEmpty()) {
+	        System.out.println("No index available. Use option 3 to first build the index.");
 	        menu();
 	        return;
 	    }
@@ -232,32 +232,23 @@ public class Main {
 	    
 	    int studentID = scanner.nextInt();
 
-	    // Finding the index of the student ID
-
 	    Integer address = index.find(studentID);
 	    if (address != null) {
-	    	
 	        try {
-	            // Lazy deletion from the RAF
-	            Pair<Integer> pair = findPairByStudentID(studentID);
-	            raFile.seek(pair.getSecond() * studentRecordSize); // Calculate offset
+	            raFile.seek(address * studentRecordSize);
 	            raFile.writeChars("DELETED");
-	            
-	            // Reset the file pointer
 	            raFile.seek(0);
-	            
-	            // Remove from the index using the found index
 	            index.delete(studentID);
 	            System.out.println("Record successfully deleted.");
 	        } catch (IOException ex) {
 	            System.out.println("Error while deleting the record: " + ex.getMessage());
 	        }
-	        
 	    } else {
 	        System.out.println("Record not found.");
 	    }
 
 	    menu();
+	    
 	}
 
 	//Adds a record to the random access file.
@@ -445,7 +436,7 @@ public class Main {
 	//Search for a record and read out to terminal.
 	private static void retrieveRecord() {
 		
-	    if (checkIndex()) {
+	    if (index.isEmpty()) {
 	        System.out.println("No index available. Use option 3 to first build the index.");
 	        menu();
 	        return;
@@ -458,10 +449,10 @@ public class Main {
 	    }
 	    int studentID = scanner.nextInt();
 
-	    Pair<Integer> pair = findPairByStudentID(studentID);
-	    if (pair != null) {
+	    Integer address = index.find(studentID);
+	    if (address != null) {
 	        try {
-	            raFile.seek(pair.getSecond() * studentRecordSize);
+	            raFile.seek(address * studentRecordSize);
 	            Student student = new Student();
 	            student.readFromFile(raFile);
 	            System.out.println(student);
